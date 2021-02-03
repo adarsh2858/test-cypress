@@ -25,7 +25,6 @@ jobs:
         cp -r cypress/videos public/videos
     - name: Copy failed result screenshots
       run: |
-        mkdir public
         cp -r cypress/screenshots public/screenshots
     - name: Merge test results into one
       run: npm run report:merge
