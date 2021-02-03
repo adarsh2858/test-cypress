@@ -58,10 +58,6 @@ describe("My first test", function () {
 
     // Login As Student
 
-    // cy.get('input[name="user[email]"]')
-    //   .type("adarsh2858@gmail.com")
-    //   .should('have.value', "adarsh2858@gmail.com")
-
     cy.get('input[name="user[password]"]')
       .type("test1234")
       .should("have.value", "test1234");
@@ -164,9 +160,17 @@ describe("My first test", function () {
       .type("Test Cypress")
       .should("have.value", "Test Cypress");
 
+    cy.contains("Configurable Parameters")
+      .click({force: true})
+
+    cy.get('input[name="configurableParameters.active"]')
+      .click({force: true})
+
     cy.contains("Save").click({ force: true });
-    cy.wait(10000);
+
+    cy.wait(5000);
     cy.reload();
+
     cy.contains("Test Cypress")
       .parent()
       .contains('Add/Edit Content')
@@ -197,19 +201,54 @@ describe("My first test", function () {
 
     cy.contains("Preview Course").click({ force: true });
 
+    cy.wait(10000);
+
     // Logout as Admin
 
+    cy.get('span[class="text-white cursor-pointer font-bold uppercase"]').click()
+    cy.contains("Logout").click()
+
+    cy.wait(5000)
     
 
     // Login As Student
 
-    // cy.get('input[name="user[email]"]')
-    //   .type("adarsh2858@gmail.com")
-    //   .should('have.value', "adarsh2858@gmail.com")
+    cy.contains("Log In").click()
 
-    // cy.get('input[name="user[password]"]')
-    //   .type("test1234")
-    //   .should("have.value", "test1234");
+    cy.get('input[name="user[email]"]')
+      .type("nilam2267@gmail.com")
+      .should('have.value', "nilam2267@gmail.com")
+
+    cy.get('input[name="user[password]"]')
+      .type("test1234")
+      .should("have.value", "test1234");
+
+    cy.get('input[value="Login"]').click();
+
+    cy.url().should("include", "/my/courses");
+
+    cy.contains("Home").click();
+    cy.url().should("include", "/explore");
+
+    cy.get("div")
+      .contains("Test Cypress")
+      .parent()
+      .contains("Get More Info")
+      .click({force: true})
+
+    cy.get('a[class="cursor-pointer inline-flex uppercase no-underline hover:no-underline justify-center py-1 px-3 border-2 hover:border-blue-600 hover:text-white leading-5 text-xs font-medium rounded-full hover:bg-blue-600 focus:outline-none focus:border-blue-600 focus:shadow-outline-indigo active:bg-blue-600 transition duration-150 ease-in-out hover:whitener w-full mb-2"]').click({force: true})
+    cy.url().should("include", "/confirm_enrollment");
+
+    cy.get('a[class="cursor-pointer inline-flex uppercase no-underline hover:no-underline justify-center py-2 px-4 border border-transparent leading-5 font-medium rounded-full text-xs text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-blue-700 transition duration-150 ease-in-out my-3"]').click()
+    cy.url().should("include", "/my/courses");
+
+    // cy.contains("Test Cypress")
+    //   .parent()
+    //   .contains("Access Course")
+    //   .click({force: true})
+
+    // cy.url().should("include", "/interactive")
+    console.log()
 
     // cy.contains("User Management")
     //   .click()
