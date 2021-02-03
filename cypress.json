@@ -3,5 +3,6 @@
   "reporterOptions": {
     "configFile": "reporter-config.json"
   },
-  "video": false
+  "video": false,
+  "chromeWebSecurity": false
 }
