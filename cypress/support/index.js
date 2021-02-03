@@ -14,18 +14,27 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import "./commands";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-import addContext from 'mochawesome/addContext'
+import addContext from "mochawesome/addContext";
 
 Cypress.on("test:after:run", (test, runnable) => {
-    
-    let videoName = Cypress.spec.name
-    videoName = videoName.replace('/.js.*', '.js')
-    const videoUrl = 'videos/' + videoName + '.mp4'
+  let videoName = Cypress.spec.name;
+  videoName = videoName.replace("/.js.*", ".js");
+  const videoUrl = "videos/" + videoName + ".mp4";
 
-    addContext({ test }, videoUrl)
+  addContext({ test }, videoUrl);
+});
+
+// likely want to do this in a support file
+// so it's applied to all spec files
+// cypress/support/index.js
+
+Cypress.on("uncaught:exception", (err, runnable) => {
+  // returning false here prevents Cypress from
+  // failing the test
+  return false;
 });
