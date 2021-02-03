@@ -19,10 +19,10 @@ jobs:
     - name: Run Cypress tests
       run: npm run test:chrome
       continue-on-error: true
-    # - name: Copy test execution videos
-    #   run: |
-    #     mkdir public
-    #     cp -r cypress/videos public/videos
+    - name: Copy test execution videos
+      run: |
+        mkdir public
+        cp -r cypress/videos public/videos
     - name: Copy failed result screenshots
       run: |
         mkdir public
