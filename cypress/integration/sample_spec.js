@@ -52,15 +52,19 @@ describe("My first test", function () {
 
     // Login As Admin
 
+    const adminEmail = "adarsh@cloudyuga.guru";
+    const studentEmail = "nilam2267@gmail.com";
+    const adminPassword = "test1234";
+
     cy.get('input[name="user[email]"]')
-      .type("adarsh@cloudyuga.guru")
-      .should("have.value", "adarsh@cloudyuga.guru");
+      .type(adminEmail)
+      .should("have.value", adminEmail);
 
     // Login As Student
 
     cy.get('input[name="user[password]"]')
-      .type("test1234")
-      .should("have.value", "test1234");
+      .type(adminPassword)
+      .should("have.value", adminPassword);
 
     // cy.clearCookies()
 
@@ -216,8 +220,8 @@ describe("My first test", function () {
     cy.contains("Log In").click()
 
     cy.get('input[name="user[email]"]')
-      .type("nilam2267@gmail.com")
-      .should('have.value', "nilam2267@gmail.com")
+      .type(studentEmail)
+      .should('have.value', studentEmail)
 
     cy.get('input[name="user[password]"]')
       .type("test1234")
