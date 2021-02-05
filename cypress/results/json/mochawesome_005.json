@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2021-02-05T08:51:07.002Z",
+    "end": "2021-02-05T08:52:07.918Z",
+    "duration": 60916,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "3d4a472c-08d5-4115-bc7e-6ba6ed952dc2",
+      "title": "",
+      "fullFile": "cypress\\integration\\sample_spec.js",
+      "file": "cypress\\integration\\sample_spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1f302f83-ccaf-473a-bc1d-154976d30a62",
+          "title": "My first test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Visit",
+              "fullTitle": "My first test Visit",
+              "timedOut": null,
+              "duration": 57128,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "\"videos/sample_spec.js.mp4\"",
+              "code": "// Arrange - setup initial app state\n// - visit a web page\n// Act - take an action\n// - query for an element\n// interact with that element\n// Assert - make an assertion\n// make an asssertion about page content\n// expect(true).to.equal(true);\ncy.visit(\"https://adarsh.staging.tveacher.com/backstage/courses\"); // cy.request(\"https://adarsh.staging.tveacher.com/devise/users/sign_in\")\n// cy.contains('foobar').click()\ncy.url().should(\"include\", \"/sign_in\"); // Login As Admin\ncy.get('input[name=\"user[email]\"]').type(\"adarsh@cloudyuga.guru\").should(\"have.value\", \"adarsh@cloudyuga.guru\"); // Login As Student\ncy.get('input[name=\"user[password]\"]').type(\"test1234\").should(\"have.value\", \"test1234\"); // cy.clearCookies()\n// cy.login()\ncy.get('input[value=\"Login\"]').click(); // cy.visit(\"https://adarsh.staging.tveacher.com/backstage/courses\")\ncy.url().should(\"include\", \"/backstage\"); // cy.visit(\"https://adarsh.staging.tveacher.com/explore\")\n// cy.url()\n//   .should('include', '/explore')\n// cy.scrollTo('bottom')\n// cy.wait(100)\n// cy.contains('Get More Info')\n//   .scrollIntoView()\n//   .then( () =>\n//     cy.contains('Get More Info')\n//       .should('be.visible')\n//       .click({force: true})\n//   )\n// cy.contains('Test Clone Supporting Files Chapter').scrollIntoView()\n// cy.contains('Test Clone Supporting Files Chapter').click({force: true })\n// cy.url()\n//   .should('include', '/interactive')\n// cy.contains('Next').click()\n// cy.contains('Previous').click()\n// cy.contains('FAQ').click()\n// cy.url()\n//   .should('include', '/backstage/faqs')\n// cy.contains(\"Homepage Builder\").click()\n// cy.contains(\"Build Homepage\").click()\n// cy.url()\n//   .should('include', '/home_page_builder')\n// cy.contains(\"Homepage Builder\").click()\n// cy.contains(\"About Us\").click()\n// cy.url()\n//   .should('include', '/about_us')\n//   .should('include', '/edit')\n// cy.contains(\"Homepage Builder\").click()\n// cy.contains(\"Testimonials\").click()\n// cy.url()\n//   .should('include', '/testimonials')\n// cy.contains(\"Homepage Builder\").click()\n// cy.contains(\"Site Announcements\").click()\n// cy.url()\n//   .should('include', '/site_announcements')\n// cy.contains(\"Homepage Builder\").click()\n// cy.contains(\"Site Quiz\").click()\n// cy.url()\n//   .should('include', '/backstage/site_quizzes')\ncy.contains(\"Courses\").click();\ncy.contains(\"Create New Course\").click();\ncy.get('input[name=\"basicInfo.title\"]').type(\"Test Cypress\").should(\"have.value\", \"Test Cypress\");\ncy.get('input[name=\"basicInfo.shortDescription\"]').type(\"Test Cypress\").should(\"have.value\", \"Test Cypress\");\ncy.get('div[data-placeholder=\"Enter long description\"]').type(\"Test Cypress\"); // cy.get('div[id=\"basicInfo-longDescription\"]')\n//   .should(\"have.value\", \"Test Cypress\");\n// // Define the command\n// Cypress.Commands.add(\"type_ckeditor\", (element, content) => {\n//   cy.window().then((win) => {\n//     win.CKEDITOR.instances[element].setData(content);\n//   });\n// });\n// // Use the command\n// cy.type_ckeditor(\"html_body\", \"<p>HTML body</p>\");\n// cy.window().then((win) => {\n//   win.EditorJS.instances[\"html_body\"].setData(\"<p>HTML body</p>\");\n// });\ncy.get('input[name=\"basicInfo.courseIdSymlink\"]').clear({\n  force: true\n}).type(\"Test Cypress\").should(\"have.value\", \"Test Cypress\");\ncy.contains(\"Configurable Parameters\").click({\n  force: true\n});\ncy.get('input[name=\"configurableParameters.active\"]').click({\n  force: true\n});\ncy.contains(\"Save\").click({\n  force: true\n});\ncy.wait(5000);\ncy.reload();\ncy.contains(\"Test Cypress\").parent().contains('Add/Edit Content').click({\n  force: true\n});\ncy.contains(\"Add Section\").click();\ncy.contains(\"Untitled Section\").click();\ncy.contains(\"Add Chapter\").click({\n  force: true\n});\ncy.contains(\"Chapter 1\").click({\n  force: true\n});\ncy.get('input[name=\"sections.0.chapters.0.name\"]').clear({\n  force: true\n}).type(\"Test Cypress\").should(\"have.value\", \"Test Cypress\");\ncy.get('div[data-placeholder=\"Enter the content here\"]').clear({\n  force: true\n}).type(\"Test Cypress\");\ncy.get('input[name = \"sections.0.chapters.0.published\"]').click({\n  force: true\n});\ncy.contains(\"Save\").click();\ncy.contains(\"Preview Course\").click({\n  force: true\n});\ncy.wait(10000); // Logout as Admin\ncy.get('span[class=\"text-white cursor-pointer font-bold uppercase\"]').click();\ncy.contains(\"Logout\").click();\ncy.wait(5000); // Login As Student\ncy.contains(\"Log In\").click();\ncy.get('input[name=\"user[email]\"]').type(\"nilam2267@gmail.com\").should('have.value', \"nilam2267@gmail.com\");\ncy.get('input[name=\"user[password]\"]').type(\"test1234\").should(\"have.value\", \"test1234\");\ncy.get('input[value=\"Login\"]').click();\ncy.url().should(\"include\", \"/my/courses\");\ncy.contains(\"Home\").click();\ncy.url().should(\"include\", \"/explore\");\ncy.get(\"div\").contains(\"Test Cypress\").parent().contains(\"Get More Info\").click({\n  force: true\n});\ncy.get('a[class=\"cursor-pointer inline-flex uppercase no-underline hover:no-underline justify-center py-1 px-3 border-2 hover:border-blue-600 hover:text-white leading-5 text-xs font-medium rounded-full hover:bg-blue-600 focus:outline-none focus:border-blue-600 focus:shadow-outline-indigo active:bg-blue-600 transition duration-150 ease-in-out hover:whitener w-full mb-2\"]').click({\n  force: true\n});\ncy.url().should(\"include\", \"/confirm_enrollment\");\ncy.get('a[class=\"cursor-pointer inline-flex uppercase no-underline hover:no-underline justify-center py-2 px-4 border border-transparent leading-5 font-medium rounded-full text-xs text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-blue-700 transition duration-150 ease-in-out my-3\"]').click();\ncy.url().should(\"include\", \"/my/courses\"); // cy.contains(\"Test Cypress\")\n//   .parent()\n//   .contains(\"Access Course\")\n//   .click({force: true})\n// cy.url().should(\"include\", \"/interactive\")\nconsole.log(); // cy.contains(\"User Management\")\n//   .click()\n// cy.contains(\"Authors\")\n//   .click()\n// cy.contains(\"Add New Author\")\n//   .click()\n// cy.get('input[name = \"author[name]\"]')\n//   .type(\"Emma Watson\")\n// The click on checkbox is not working\n// cy.get('input[name = \"author[show_on_homepage]\"]')[0]\n//   ?.click({force: true})\n// Upload image\n// cy.get('input[name = \"author[image]\"]')\n//   .click()",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected 'https://adarsh.staging.tveacher.com/courses/test-cypress/interactive' to include '/confirm_enrollment'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected 'https://adarsh.staging.tveacher.com/courses/test-cypress/interactive' to include '/confirm_enrollment'\n    at Context.eval (https://adarsh.staging.tveacher.com/__cypress/tests?p=cypress\\integration\\sample_spec.js:272:14)",
+                "diff": null
+              },
+              "uuid": "a103ef7a-619b-446a-9269-40b478032bb6",
+              "parentUUID": "1f302f83-ccaf-473a-bc1d-154976d30a62",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "a103ef7a-619b-446a-9269-40b478032bb6"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 57128,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/json",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

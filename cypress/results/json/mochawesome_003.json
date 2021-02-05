@@ -1,0 +1,149 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 2,
+    "pending": 0,
+    "failures": 1,
+    "start": "2021-02-05T08:50:24.769Z",
+    "end": "2021-02-05T08:50:41.279Z",
+    "duration": 16510,
+    "testsRegistered": 3,
+    "passPercent": 66.66666666666666,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8f011066-b368-4ae4-a560-66025c896e34",
+      "title": "",
+      "fullFile": "cypress\\integration\\google-fail.js",
+      "file": "cypress\\integration\\google-fail.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e2bfafc7-b1d5-4b41-b8f1-4dac43ad2d19",
+          "title": "Google fail search",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully loads Google.com",
+              "fullTitle": "Google fail search Successfully loads Google.com",
+              "timedOut": null,
+              "duration": 3632,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "\"videos/google-fail.js.mp4\"",
+              "code": "cy.visit('https://www.google.com');",
+              "err": {},
+              "uuid": "8850de43-0953-4a81-a9b1-176ffd08b019",
+              "parentUUID": "e2bfafc7-b1d5-4b41-b8f1-4dac43ad2d19",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Search for something strange",
+              "fullTitle": "Google fail search Search for something strange",
+              "timedOut": null,
+              "duration": 3963,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "\"videos/google-fail.js.mp4\"",
+              "code": "cy.get('[name=\"q\"]').type('anqqaxc a57k2..').should('have.value', 'anqqaxc a57k2..').type('{enter}');",
+              "err": {},
+              "uuid": "28a2d92b-9ae3-4d7c-a070-5211ac2a5776",
+              "parentUUID": "e2bfafc7-b1d5-4b41-b8f1-4dac43ad2d19",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Expect more than 1000 results",
+              "fullTitle": "Google fail search Expect more than 1000 results",
+              "timedOut": null,
+              "duration": 4627,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "\"videos/google-fail.js.mp4\"",
+              "code": "cy.get('[id=\"result-stats\"]').contains('100 results');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: '100 results' within the element: <div#result-stats> but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: '100 results' within the element: <div#result-stats> but never did.\n    at Context.eval (https://www.google.com/__cypress/tests?p=cypress\\integration\\google-fail.js:107:35)",
+                "diff": null
+              },
+              "uuid": "cb70056f-b1dd-41cb-8dcf-7b933a803c39",
+              "parentUUID": "e2bfafc7-b1d5-4b41-b8f1-4dac43ad2d19",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8850de43-0953-4a81-a9b1-176ffd08b019",
+            "28a2d92b-9ae3-4d7c-a070-5211ac2a5776"
+          ],
+          "failures": [
+            "cb70056f-b1dd-41cb-8dcf-7b933a803c39"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 12222,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/json",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}
