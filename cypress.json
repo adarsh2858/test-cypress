@@ -4,5 +4,8 @@
     "configFile": "reporter-config.json"
   },
   "video": true,
-  "chromeWebSecurity": false
+  "chromeWebSecurity": false,
+  "screenshotOnRunFailure": true,
+  "trashAssetsBeforeRuns": true,
+  "screenshotsFolder": "cypress/screenshots"
 }
