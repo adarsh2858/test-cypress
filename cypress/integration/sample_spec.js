@@ -56,6 +56,13 @@ describe("My first test", function () {
     const studentEmail = "nilam2267@gmail.com";
     const adminPassword = "test1234";
 
+    const log = Cypress.log({
+      name: "login",
+      displayName: "LOGIN",
+      message: [`Authentication ${adminEmail}`],
+      autoEnd: false,
+    });
+
     cy.get('input[name="user[email]"]')
       .type(adminEmail)
       .should("have.value", adminEmail);
@@ -67,12 +74,18 @@ describe("My first test", function () {
       .should("have.value", adminPassword);
 
     // cy.clearCookies()
+    log.set({
+      consoleProps() {
+        return { status: "LOGGED IN" }
+      },
+    });
 
     // cy.login()
     cy.get('input[value="Login"]').click();
     // cy.visit("https://adarsh.staging.tveacher.com/backstage/courses")
 
     cy.url().should("include", "/backstage");
+    log.end();
 
     // cy.visit("https://adarsh.staging.tveacher.com/explore")
     // cy.url()
@@ -112,7 +125,7 @@ describe("My first test", function () {
     // cy.contains("About Us").click()
     // cy.url()
     //   .should('include', '/about_us')
-    //   .should('include', '/edit')
+    //   .and('include', '/edit')
 
     // cy.contains("Homepage Builder").click()
     // cy.contains("Testimonials").click()
