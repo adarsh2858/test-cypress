@@ -54,7 +54,7 @@ describe("My first test", function () {
 
     const adminEmail = "adarsh@cloudyuga.guru";
     const studentEmail = "nilam2267@gmail.com";
-    const adminPassword = "test1234";
+    const adminPassword = Cypress.env('user_password');
 
     const log = Cypress.log({
       name: "login",
