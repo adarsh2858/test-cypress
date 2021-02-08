@@ -69,8 +69,7 @@ describe("Create a new course with all the course parameters modified", () => {
     cy.contains("Pricing and Validity").click({ force: true });
 
     cy.scrollTo('center')
-
-    cy.wait(3000)
+    cy.wait(1000)
 
     cy.get('select[name="pricingAndValidityInfo.priceCurrency"]')
       .select('INR')
@@ -94,9 +93,25 @@ describe("Create a new course with all the course parameters modified", () => {
 
   it("fill course show page information", () => {});
 
-  it("add tags", () => {});
+  it("add tags", () => {
+    cy.contains("Tags").click({ force: true });
 
-  it("check feature flage", () => {});
+    cy.scrollTo('bottom')
+    cy.wait(1000)
+    
+    cy.get('input[name="tags.tagList"]')
+      .type("testing, cypress, hello-world-app")
+  });
+
+  it("check feature flags", () => {
+    cy.contains("Feature Flags").click({ force: true });
+
+    cy.scrollTo('bottom')
+      .wait(1000)
+
+    cy.get('input[value="requires_container"]')
+      .click()
+  });
 });
 
 describe("Check how describe block works", () => {
