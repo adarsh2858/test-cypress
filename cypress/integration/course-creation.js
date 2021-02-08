@@ -4,12 +4,13 @@
 // })
 
 describe("Login to the staging setup", () => {
-  it("login as admin", () => {
+  it("logs in as an admin", () => {
     cy.visit("https://adarsh.staging.tveacher.com/backstage/courses");
+
     cy.url().should("include", "/sign_in");
 
     const adminEmail = "adarsh@cloudyuga.guru";
-    const adminPassword = Cypress.env('user_password');
+    const adminPassword = Cypress.env("user_password");
 
     cy.get('input[name="user[email]"]')
       .type(adminEmail)
@@ -22,18 +23,18 @@ describe("Login to the staging setup", () => {
       .should("have.value", adminPassword);
 
     cy.get('input[value="Login"]').click();
-    cy.contains("Create New Course").click();
   });
 });
 
-describe("Create a new course with all the course parameters modified", () => {
+describe("a new course with all the course parameters modified", () => {
+  // before(() => adminLogin);
 
-  it("create new course", () => {
-    // cy.contains("Create New Course").click();
+  it("creates a new course", () => {
+    cy.contains("Create New Course").click();
     console.log("HELLO WORLD");
   });
 
-  it("add basic info", () => {
+  it("adds a basic info for the course", () => {
     const courseName = "Test Cypress";
 
     cy.get('input[name="basicInfo.title"]')
@@ -52,68 +53,71 @@ describe("Create a new course with all the course parameters modified", () => {
       .should("have.value", courseName);
   });
 
-  it("tick few authors if found", () => {
+  it("ticks two authors if found", () => {
     let i = 1;
     cy.contains("Author Information").click({ force: true });
+
     cy.get('input[name="authorInfo.assignedAuthorIds"]').each((author) => {
       author.click();
 
       // Select only the first two authors
-      if (++i == 3){
-          return false;
+      if (++i == 3) {
+        return false;
       }
     });
   });
 
-  it("add pricing and validity", () => {
+  it("adds different pricing and validity", () => {
     cy.contains("Pricing and Validity").click({ force: true });
 
-    cy.scrollTo('center')
-    cy.wait(1000)
+    cy.scrollTo("center").wait(1000);
 
-    cy.get('select[name="pricingAndValidityInfo.priceCurrency"]')
-      .select('INR')
+    cy.get('select[name="pricingAndValidityInfo.priceCurrency"]').select("INR");
 
-    cy.get('input[name="pricingAndValidityInfo.price"]')
-      .clear()
-      .type('10')
-    
+    cy.get('input[name="pricingAndValidityInfo.price"]').clear().type("10");
+
     cy.get('input[name="pricingAndValidityInfo.strikedPrice"]')
-      .clear()  
-      .type("20")
+      .clear()
+      .type("20");
   });
 
-  it("modify configurable parameters", () => {
-    cy.contains("Configurable Parameters")
-    .click({force: true})
+  it("modifies switch in the configurable parameters", () => {
+    cy.contains("Configurable Parameters").click({ force: true });
 
-  cy.get('input[name="configurableParameters.active"]')
-    .click({force: true})
+    cy.get('input[name="configurableParameters.active"]').click({
+      force: true,
+    });
   });
 
-  it("fill course show page information", () => {});
+  it("fills the course show page information", () => {});
 
-  it("add tags", () => {
+  it("adds few tags", () => {
     cy.contains("Tags").click({ force: true });
 
-    cy.scrollTo('bottom')
-    cy.wait(1000)
-    
-    cy.get('input[name="tags.tagList"]')
-      .type("testing, cypress, hello-world-app")
+    cy.scrollTo("bottom").wait(1000);
+
+    cy.get('input[name="tags.tagList"]').type(
+      "testing, cypress, hello-world-app"
+    );
   });
 
-  it("check feature flags", () => {
+  it("checks for feature flags", () => {
     cy.contains("Feature Flags").click({ force: true });
 
-    cy.scrollTo('bottom')
-      .wait(1000)
+    cy.scrollTo("bottom").wait(1000);
 
-    cy.get('input[value="requires_container"]')
-      .click()
+    cy.get('input[value="requires_container"]').click();
+  });
+
+  it("saves the course", () => {
+    cy.scrollTo("bottom").wait(1000);
+
+    cy.contains("Save").click();
+
+    cy.url().should("include", "/backstage/courses");
   });
 });
 
 describe("Check how describe block works", () => {
-    console.log("NEw describe");
+  console.log("NEw describe");
 });
