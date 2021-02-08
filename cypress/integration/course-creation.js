@@ -22,13 +22,14 @@ describe("Login to the staging setup", () => {
       .should("have.value", adminPassword);
 
     cy.get('input[value="Login"]').click();
+    cy.contains("Create New Course").click();
   });
 });
 
 describe("Create a new course with all the course parameters modified", () => {
 
   it("create new course", () => {
-    cy.contains("Create New Course").click();
+    // cy.contains("Create New Course").click();
     console.log("HELLO WORLD");
   });
 
@@ -67,6 +68,10 @@ describe("Create a new course with all the course parameters modified", () => {
   it("add pricing and validity", () => {
     cy.contains("Pricing and Validity").click({ force: true });
 
+    cy.scrollTo('center')
+
+    cy.wait(3000)
+
     cy.get('select[name="pricingAndValidityInfo.priceCurrency"]')
       .select('INR')
 
@@ -84,7 +89,7 @@ describe("Create a new course with all the course parameters modified", () => {
     .click({force: true})
 
   cy.get('input[name="configurableParameters.active"]')
-    .click()
+    .click({force: true})
   });
 
   it("fill course show page information", () => {});
