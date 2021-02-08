@@ -9,7 +9,7 @@ describe("Login to the staging setup", () => {
     cy.url().should("include", "/sign_in");
 
     const adminEmail = "adarsh@cloudyuga.guru";
-    const adminPassword = "test1234";
+    const adminPassword = Cypress.env('user_password');
 
     cy.get('input[name="user[email]"]')
       .type(adminEmail)
