@@ -36,7 +36,7 @@ describe("Login to the staging setup", () => {
   });
 });
 
-describe("a new course with all the course parameters modified", () => {
+describe("Create a new course with all the course parameters modified", () => {
   before(() => userLogin(adminEmail));
 
   beforeEach(() => {
@@ -126,7 +126,25 @@ describe("a new course with all the course parameters modified", () => {
   it("saves the course", () => {
     cy.scrollTo("bottom").wait(1000);
 
-    cy.contains("Save").click();
+    cy.contains("Save").click().wait(2000);
+
+    cy.url().should("include", "/backstage/courses");
+  });
+
+  it("deletes the course", () => {
+
+    cy.reload();
+
+    cy.contains("Test Cypress")
+      .parent()
+      .parent()
+      .parent()
+      .children().then(($child) =>{
+        cy.get($child)
+          .children()
+          .find('img[title="Delete Course"]')
+          .click({force: true});
+      });
 
     cy.url().should("include", "/backstage/courses");
   });
@@ -134,4 +152,5 @@ describe("a new course with all the course parameters modified", () => {
 
 // describe("Check how describe block works", () => {
 //   console.log("NEw describe");
+//   Try using .type('{enter}') to simulate pressing enter key
 // });
