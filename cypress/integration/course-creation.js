@@ -3,18 +3,19 @@
 // cy.visit('/') // this root will take the baseURL from the cypress.json file
 // })
 
-describe("Login to the staging setup", () => {
-  it("logs in as an admin", () => {
-    cy.visit("https://adarsh.staging.tveacher.com/backstage/courses");
+const adminEmail = "adarsh@cloudyuga.guru";
+const studentEmail = "adarsh2858@gmail.com";
+
+const userLogin = (currentEmail) => {
+  cy.visit("https://adarsh.staging.tveacher.com/backstage/courses");
 
     cy.url().should("include", "/sign_in");
 
-    const adminEmail = "adarsh@cloudyuga.guru";
     const adminPassword = Cypress.env("user_password");
 
     cy.get('input[name="user[email]"]')
-      .type(adminEmail)
-      .should("have.value", adminEmail);
+      .type(currentEmail)
+      .should("have.value", currentEmail);
 
     // Login As Student
 
@@ -23,11 +24,24 @@ describe("Login to the staging setup", () => {
       .should("have.value", adminPassword);
 
     cy.get('input[value="Login"]').click();
+}
+
+describe("Login to the staging setup", () => {
+  it("logs in as an admin", () => {
+    userLogin(adminEmail);
+  });
+
+  it("logs in as a student", () => {
+    userLogin(studentEmail);
   });
 });
 
 describe("a new course with all the course parameters modified", () => {
-  // before(() => adminLogin);
+  before(() => userLogin(adminEmail));
+
+  beforeEach(() => {
+    Cypress.Cookies.preserveOnce("_cloudyuga_session");
+  })
 
   it("creates a new course", () => {
     cy.contains("Create New Course").click();
@@ -118,6 +132,6 @@ describe("a new course with all the course parameters modified", () => {
   });
 });
 
-describe("Check how describe block works", () => {
-  console.log("NEw describe");
-});
+// describe("Check how describe block works", () => {
+//   console.log("NEw describe");
+// });
