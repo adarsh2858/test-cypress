@@ -11,6 +11,11 @@ const userLogin = (currentEmail) => {
 
     cy.url().should("include", "/sign_in");
 
+    cy.get('div[id="flash_alert"]')
+      .should((content) => {
+        expect(content).to.contain('You need to sign in or sign up before continuing.');
+    })
+
     const adminPassword = Cypress.env("user_password");
 
     cy.get('input[name="user[email]"]')
