@@ -69,4 +69,30 @@ describe("Visit the homepage and interact with different elements", () => {
       cy.get('a[class="cursor-pointer inline-flex uppercase no-underline hover:no-underline justify-center py-2 px-4 border border-transparent leading-5 font-medium rounded-full text-xs text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-blue-700 transition duration-150 ease-in-out my-3"]').click()
       cy.url().should("include", "/my/courses");
     })
+
+    it("access the course which the student enrolled", () => {
+      cy.contains("Test Cypress")
+        .parent()
+        .parent()
+        .parent()
+        .children()
+        .children().then(($child) =>{
+          cy.scrollTo('center')
+            .wait(1000)
+
+          cy.get($child[1])
+            .children()
+            .contains("Access Course")
+            .click()
+        });
+
+      cy.contains("Previous").click()
+
+      cy.get('div[class="Toastify__toast-body"]')
+        .should((content) => {
+          expect(content).to.contain('Beginning of the course')
+        })
+
+      cy.contains("Next").click()
+    })
 })
