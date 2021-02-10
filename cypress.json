@@ -8,5 +8,11 @@
   "chromeWebSecurity": false,
   "screenshotOnRunFailure": true,
   "trashAssetsBeforeRuns": true,
-  "screenshotsFolder": "cypress/screenshots"
+  "screenshotsFolder": "cypress/screenshots",
+  "testFiles": [
+    "course-creation.js",
+    "add-course-content.js",
+    "sample_spec.js",
+    "student-working-with-course.js"
+  ]
 }
