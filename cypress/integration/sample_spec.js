@@ -146,8 +146,8 @@ describe("My first test", function () {
     cy.contains("Create New Course").click();
 
     cy.get('input[name="basicInfo.title"]')
-      .type("Test Cypress")
-      .should("have.value", "Test Cypress");
+      .type("Test Cypress 2")
+      .should("have.value", "Test Cypress 2");
 
     cy.get('input[name="basicInfo.shortDescription"]')
       .type("Test Cypress")
@@ -174,8 +174,8 @@ describe("My first test", function () {
 
     cy.get('input[name="basicInfo.courseIdSymlink"]')
       .clear({ force: true })
-      .type("Test Cypress")
-      .should("have.value", "Test Cypress");
+      .type("Test Cypress 2")
+      .should("have.value", "Test Cypress 2");
 
     cy.contains("Configurable Parameters")
       .click({force: true})
@@ -188,7 +188,7 @@ describe("My first test", function () {
     cy.wait(5000);
     cy.reload();
 
-    cy.contains("Test Cypress")
+    cy.contains("Test Cypress 2")
       .parent()
       .contains('Add/Edit Content')
       .click({ force: true });
@@ -248,7 +248,7 @@ describe("My first test", function () {
     cy.url().should("include", "/explore");
 
     cy.get("div")
-      .contains("Test Cypress")
+      .contains("Test Cypress 2")
       .parent()
       .contains("Get More Info")
       .click({force: true})
