@@ -135,24 +135,6 @@ describe("Create a new course with all the course parameters modified", () => {
 
     cy.url().should("include", "/backstage/courses");
   });
-
-  // it("deletes the course", () => {
-
-  //   cy.reload();
-
-  //   cy.contains("Test Cypress 1")
-  //     .parent()
-  //     .parent()
-  //     .parent()
-  //     .children().then(($child) =>{
-  //       cy.get($child)
-  //         .children()
-  //         .find('img[title="Delete Course"]')
-  //         .click({force: true});
-  //     });
-
-  //   cy.url().should("include", "/backstage/courses");
-  // });
 });
 
 // describe("Check how describe block works", () => {
