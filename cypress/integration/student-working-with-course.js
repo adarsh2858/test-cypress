@@ -56,9 +56,12 @@ describe("Visit the homepage and interact with different elements", () => {
     it ("views the course overview page of all the courses", () => {
     })
 
-    it("enrolls to a course", () => {
+    it.only("enrolls to a course", () => {
+      cy.contains("Home").click();
+      cy.scrollTo('center')
+        .wait(1000)
       cy.get("div")
-      .contains("Test Cypress")
+      .contains("Test Cypress 1")
       .parent()
       .contains("Get More Info")
       .click({force: true})
@@ -71,7 +74,7 @@ describe("Visit the homepage and interact with different elements", () => {
     })
 
     it("access the course which the student enrolled", () => {
-      cy.contains("Test Cypress")
+      cy.contains("Test Cypress 1")
         .parent()
         .parent()
         .parent()

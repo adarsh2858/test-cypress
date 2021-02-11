@@ -54,7 +54,7 @@ describe("Create a new course with all the course parameters modified", () => {
   });
 
   it("adds a basic info for the course", () => {
-    const courseName = "Test Cypress";
+    const courseName = "Test Cypress 1";
 
     cy.get('input[name="basicInfo.title"]')
       .type(courseName)
@@ -140,7 +140,7 @@ describe("Create a new course with all the course parameters modified", () => {
 
   //   cy.reload();
 
-  //   cy.contains("Test Cypress")
+  //   cy.contains("Test Cypress 1")
   //     .parent()
   //     .parent()
   //     .parent()
