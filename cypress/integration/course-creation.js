@@ -91,13 +91,17 @@ describe("Create a new course with all the course parameters modified", () => {
 
     cy.scrollTo("center").wait(1000);
 
-    cy.get('select[name="pricingAndValidityInfo.priceCurrency"]').select("INR");
+    cy.get('select[name="pricingAndValidityInfo.priceCurrency"]')
+      .select("INR");
 
     cy.get('input[name="pricingAndValidityInfo.price"]').clear().type("10");
 
     cy.get('input[name="pricingAndValidityInfo.strikedPrice"]')
       .clear()
       .type("20");
+
+    cy.get('select[name="pricingAndValidityInfo.trialPeriodInDays"]')
+      .select("24 Hours");
   });
 
   it("modifies switch in the configurable parameters", () => {
