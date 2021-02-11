@@ -7,29 +7,32 @@ const adminEmail = "adarsh@cloudyuga.guru";
 const studentEmail = "adarsh2858@gmail.com";
 
 const userLogin = (currentEmail) => {
-  cy.visit("https://adarsh.staging.tveacher.com/backstage/courses");
+  cy.visit("/backstage/courses");
 
-    cy.url().should("include", "/sign_in");
+  // cy.contains("Log In").click();
 
-    cy.get('div[id="flash_alert"]')
-      .should((content) => {
-        expect(content).to.contain('You need to sign in or sign up before continuing.');
-    })
+  cy.url().should("include", "/sign_in");
 
-    const adminPassword = Cypress.env("user_password");
+  cy.get('div[id="flash_alert"]').should((content) => {
+    expect(content).to.contain(
+      "You need to sign in or sign up before continuing."
+    );
+  });
 
-    cy.get('input[name="user[email]"]')
-      .type(currentEmail)
-      .should("have.value", currentEmail);
+  const adminPassword = Cypress.env("user_password");
 
-    // Login As Student
+  cy.get('input[name="user[email]"]')
+    .type(currentEmail)
+    .should("have.value", currentEmail);
 
-    cy.get('input[name="user[password]"]')
-      .type(adminPassword)
-      .should("have.value", adminPassword);
+  // Login As Student
 
-    cy.get('input[value="Login"]').click();
-}
+  cy.get('input[name="user[password]"]')
+    .type(adminPassword)
+    .should("have.value", adminPassword);
+
+  cy.get('input[value="Login"]').click();
+};
 
 describe("Login to the staging setup", () => {
   it("logs in as an admin", () => {
@@ -46,7 +49,7 @@ describe("Create a new course with all the course parameters modified", () => {
 
   beforeEach(() => {
     Cypress.Cookies.preserveOnce("_cloudyuga_session");
-  })
+  });
 
   it("creates a new course", () => {
     cy.contains("Create New Course").click();
@@ -91,8 +94,7 @@ describe("Create a new course with all the course parameters modified", () => {
 
     cy.scrollTo("center").wait(1000);
 
-    cy.get('select[name="pricingAndValidityInfo.priceCurrency"]')
-      .select("INR");
+    cy.get('select[name="pricingAndValidityInfo.priceCurrency"]').select("INR");
 
     cy.get('input[name="pricingAndValidityInfo.price"]').clear().type("10");
 
@@ -100,8 +102,9 @@ describe("Create a new course with all the course parameters modified", () => {
       .clear()
       .type("20");
 
-    cy.get('select[name="pricingAndValidityInfo.trialPeriodInDays"]')
-      .select("24 Hours");
+    cy.get('select[name="pricingAndValidityInfo.trialPeriodInDays"]').select(
+      "24 Hours"
+    );
   });
 
   it("modifies switch in the configurable parameters", () => {
