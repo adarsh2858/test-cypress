@@ -6,7 +6,7 @@ Cypress.Commands.add("login", (csrfToken) => {
 
   cy.request({
     method: "POST",
-    url: "https://adarsh.staging.tveacher.com/devise/users/sign_in",
+    url: "/",
     failOnStatusCode: false, // dont fail so we can make assertions
     form: true, // we are submitting a regular form body
     body: {
@@ -44,8 +44,10 @@ describe("My first test", function () {
 
     // expect(true).to.equal(true);
 
-    cy.visit("https://adarsh.staging.tveacher.com/backstage/courses");
-    // cy.request("https://adarsh.staging.tveacher.com/devise/users/sign_in")
+    cy.visit("/");
+
+    cy.contains("Log In").click();
+    // cy.request("/")
     // cy.contains('foobar').click()
 
     cy.url().should("include", "/sign_in");
@@ -54,7 +56,7 @@ describe("My first test", function () {
 
     const adminEmail = "adarsh@cloudyuga.guru";
     const studentEmail = "nilam2267@gmail.com";
-    const adminPassword = Cypress.env('user_password');
+    const adminPassword = Cypress.env("user_password");
 
     const log = Cypress.log({
       name: "login",
@@ -76,18 +78,18 @@ describe("My first test", function () {
     // cy.clearCookies()
     log.set({
       consoleProps() {
-        return { status: "LOGGED IN" }
+        return { status: "LOGGED IN" };
       },
     });
 
     // cy.login()
     cy.get('input[value="Login"]').click();
-    // cy.visit("https://adarsh.staging.tveacher.com/backstage/courses")
+    // cy.visit("/")
 
     cy.url().should("include", "/backstage");
     log.end();
 
-    // cy.visit("https://adarsh.staging.tveacher.com/explore")
+    // cy.visit("/")
     // cy.url()
     //   .should('include', '/explore')
 
@@ -153,8 +155,9 @@ describe("My first test", function () {
       .type("Test Cypress")
       .should("have.value", "Test Cypress");
 
-    cy.get('div[data-placeholder="Enter long description"]')
-      .type("Test Cypress")
+    cy.get('div[data-placeholder="Enter long description"]').type(
+      "Test Cypress"
+    );
 
     // cy.get('div[id="basicInfo-longDescription"]')
     //   .should("have.value", "Test Cypress");
@@ -177,11 +180,11 @@ describe("My first test", function () {
       .type("Test Cypress 2")
       .should("have.value", "Test Cypress 2");
 
-    cy.contains("Configurable Parameters")
-      .click({force: true})
+    cy.contains("Configurable Parameters").click({ force: true });
 
-    cy.get('input[name="configurableParameters.active"]')
-      .click({force: true})
+    cy.get('input[name="configurableParameters.active"]').click({
+      force: true,
+    });
 
     cy.contains("Save").click({ force: true });
 
@@ -190,16 +193,16 @@ describe("My first test", function () {
 
     cy.contains("Test Cypress 2")
       .parent()
-      .contains('Add/Edit Content')
+      .contains("Add/Edit Content")
       .click({ force: true });
 
     cy.contains("Add Section").click();
 
     cy.contains("Untitled Section").click();
 
-    cy.contains("Add Chapter").click({force: true});
+    cy.contains("Add Chapter").click({ force: true });
 
-    cy.contains("Chapter 1").click({force: true});
+    cy.contains("Chapter 1").click({ force: true });
 
     cy.get('input[name="sections.0.chapters.0.name"]')
       .clear({ force: true })
@@ -207,7 +210,7 @@ describe("My first test", function () {
       .should("have.value", "Test Cypress");
 
     cy.get('div[data-placeholder="Enter the content here"]')
-      .clear({force: true})
+      .clear({ force: true })
       .type("Test Cypress");
 
     cy.get('input[name = "sections.0.chapters.0.published"]').click({
@@ -222,19 +225,20 @@ describe("My first test", function () {
 
     // Logout as Admin
 
-    cy.get('span[class="text-white cursor-pointer font-bold uppercase"]').click()
-    cy.contains("Logout").click()
+    cy.get(
+      'span[class="text-white cursor-pointer font-bold uppercase"]'
+    ).click();
+    cy.contains("Logout").click();
 
-    cy.wait(5000)
-    
+    cy.wait(5000);
 
     // Login As Student
 
-    cy.contains("Log In").click()
+    cy.contains("Log In").click();
 
     cy.get('input[name="user[email]"]')
       .type(studentEmail)
-      .should('have.value', studentEmail)
+      .should("have.value", studentEmail);
 
     cy.get('input[name="user[password]"]')
       .type("test1234")
@@ -251,12 +255,16 @@ describe("My first test", function () {
       .contains("Test Cypress 2")
       .parent()
       .contains("Get More Info")
-      .click({force: true})
+      .click({ force: true });
 
-    cy.get('a[class="cursor-pointer inline-flex uppercase no-underline hover:no-underline justify-center py-1 px-3 border-2 hover:border-blue-600 hover:text-white leading-5 text-xs font-medium rounded-full hover:bg-blue-600 focus:outline-none focus:border-blue-600 focus:shadow-outline-indigo active:bg-blue-600 transition duration-150 ease-in-out hover:whitener w-full mb-2"]').click({force: true})
+    cy.get(
+      'a[class="cursor-pointer inline-flex uppercase no-underline hover:no-underline justify-center py-1 px-3 border-2 hover:border-blue-600 hover:text-white leading-5 text-xs font-medium rounded-full hover:bg-blue-600 focus:outline-none focus:border-blue-600 focus:shadow-outline-indigo active:bg-blue-600 transition duration-150 ease-in-out hover:whitener w-full mb-2"]'
+    ).click({ force: true });
     cy.url().should("include", "/confirm_enrollment");
 
-    cy.get('a[class="cursor-pointer inline-flex uppercase no-underline hover:no-underline justify-center py-2 px-4 border border-transparent leading-5 font-medium rounded-full text-xs text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-blue-700 transition duration-150 ease-in-out my-3"]').click()
+    cy.get(
+      'a[class="cursor-pointer inline-flex uppercase no-underline hover:no-underline justify-center py-2 px-4 border border-transparent leading-5 font-medium rounded-full text-xs text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-blue-700 transition duration-150 ease-in-out my-3"]'
+    ).click();
     cy.url().should("include", "/my/courses");
 
     // cy.contains("Test Cypress")
@@ -265,7 +273,7 @@ describe("My first test", function () {
     //   .click({force: true})
 
     // cy.url().should("include", "/interactive")
-    console.log()
+    console.log();
 
     // cy.contains("User Management")
     //   .click()

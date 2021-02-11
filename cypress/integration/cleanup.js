@@ -1,7 +1,7 @@
 const adminEmail = "adarsh@cloudyuga.guru";
 
 const userLogin = (currentEmail) => {
-  cy.visit("https://adarsh.staging.tveacher.com/backstage/courses");
+  cy.visit("/backstage/courses");
 
   cy.url().should("include", "/sign_in");
 

@@ -3,7 +3,7 @@
 const adminEmail = "adarsh@cloudyuga.guru";
 
 const userLogin = (currentEmail) => {
-  cy.visit("https://adarsh.staging.tveacher.com/backstage/courses");
+  cy.visit("/backstage/courses");
 
   cy.url().should("include", "/sign_in");
 
@@ -49,7 +49,6 @@ describe("add course content", () => {
       .type("Test Cypress Section");
 
     cy.contains("Add Chapter").click({ force: true });
-
   });
 
   it("adds content to an existing chapter", () => {
@@ -67,7 +66,7 @@ describe("add course content", () => {
     cy.get('div[class="codex-editor__redactor"]')
       .click()
       .type("Test Cypress content {enter}");
-    
+
     cy.get('div[class="codex-editor__redactor"]')
       .click()
       .type("Test Cypress content {enter}");
@@ -81,5 +80,5 @@ describe("add course content", () => {
     cy.contains("Save").click();
 
     cy.contains("Preview Course").click({ force: true });
-  })
+  });
 });
