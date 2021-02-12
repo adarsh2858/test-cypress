@@ -219,7 +219,7 @@ describe("My first test", function () {
 
     cy.contains("Save").click();
 
-    cy.contains("Preview Course").click({ force: true });
+    // cy.contains("Preview Course").click({ force: true });
 
     cy.wait(10000);
 
