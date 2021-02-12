@@ -14,7 +14,6 @@
     "course-creation.js",
     "add-course-content.js",
     "sample_spec.js",
-    "student-working-with-course.js",
-    "cleanup.js"
+    "student-working-with-course.js"
   ]
 }
