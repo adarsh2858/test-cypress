@@ -1,32 +1,6 @@
-// import { userLogin } from './course-creation'
+import { userLogin } from './Utils';
 
 const adminEmail = "adarsh@cloudyuga.guru";
-
-const userLogin = (currentEmail) => {
-  cy.visit("/backstage/courses");
-
-  cy.url().should("include", "/sign_in");
-
-  cy.get('div[id="flash_alert"]').should((content) => {
-    expect(content).to.contain(
-      "You need to sign in or sign up before continuing."
-    );
-  });
-
-  const adminPassword = Cypress.env("user_password");
-
-  cy.get('input[name="user[email]"]')
-    .type(currentEmail)
-    .should("have.value", currentEmail);
-
-  // Login As Student
-
-  cy.get('input[name="user[password]"]')
-    .type(adminPassword)
-    .should("have.value", adminPassword);
-
-  cy.get('input[value="Login"]').click();
-};
 
 describe("add course content", () => {
   before(() => userLogin(adminEmail));

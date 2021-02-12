@@ -1,31 +1,6 @@
-// Look for a way to import the similar function defined in the course-creation file
-// It should not run the entire file's describe/it blocks
-// import { userLogin } from './course-creation';
-// console.log(userLogin)
+import { userLogin } from './Utils';
 
 const studentEmail = "nilam2267@gmail.com";
-
-const userLogin = (currentEmail) => {
-  cy.visit("/");
-
-  cy.contains("Log In").click();
-
-  cy.url().should("include", "/sign_in");
-
-  const adminPassword = Cypress.env("user_password");
-
-  cy.get('input[name="user[email]"]')
-    .type(currentEmail)
-    .should("have.value", currentEmail);
-
-  // Login As Student
-
-  cy.get('input[name="user[password]"]')
-    .type(adminPassword)
-    .should("have.value", adminPassword);
-
-  cy.get('input[value="Login"]').click();
-};
 
 describe("Login to the staging setup", () => {
   it("logs in as a student", () => {

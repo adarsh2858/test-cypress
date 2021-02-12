@@ -1,38 +1,7 @@
-// Add the following in the root file outside of it block inside describe block
-// beforeEach( () => {
-// cy.visit('/') // this root will take the baseURL from the cypress.json file
-// })
+import { userLogin } from './Utils';
 
 const adminEmail = "adarsh@cloudyuga.guru";
-const studentEmail = "adarsh2858@gmail.com";
-
-const userLogin = (currentEmail) => {
-  cy.visit("/backstage/courses");
-
-  // cy.contains("Log In").click();
-
-  cy.url().should("include", "/sign_in");
-
-  cy.get('div[id="flash_alert"]').should((content) => {
-    expect(content).to.contain(
-      "You need to sign in or sign up before continuing."
-    );
-  });
-
-  const adminPassword = Cypress.env("user_password");
-
-  cy.get('input[name="user[email]"]')
-    .type(currentEmail)
-    .should("have.value", currentEmail);
-
-  // Login As Student
-
-  cy.get('input[name="user[password]"]')
-    .type(adminPassword)
-    .should("have.value", adminPassword);
-
-  cy.get('input[value="Login"]').click();
-};
+const studentEmail = "nilam2267@gmail.com";
 
 describe("Login to the staging setup", () => {
   it("logs in as an admin", () => {
