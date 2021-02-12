@@ -10,6 +10,11 @@
   "trashAssetsBeforeRuns": true,
   "screenshotsFolder": "cypress/screenshots",
   "testFiles": [
-    "sample_spec.js"
+    "user-registration.js",
+    "course-creation.js",
+    "add-course-content.js",
+    "sample_spec.js",
+    "student-working-with-course.js",
+    "cleanup.js"
   ]
 }
