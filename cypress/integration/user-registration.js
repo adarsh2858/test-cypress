@@ -1,6 +1,6 @@
 describe("User registration process", () => {
   it("fills in the details on the sign up page", () => {
-    cy.visit("/");
+    cy.visit("/explore");
     cy.contains("Sign Up").click();
 
     const password = Cypress.env("user_password");

@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://adarsh.staging.tveacher.com/",
+  "baseUrl": "https://adarsh.staging.tveacher.com",
   "reporter": "cypress-multi-reporters",
   "reporterOptions": {
     "configFile": "reporter-config.json"
