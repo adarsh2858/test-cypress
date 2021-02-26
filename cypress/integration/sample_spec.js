@@ -44,7 +44,7 @@ describe("My first test", function () {
 
     // expect(true).to.equal(true);
 
-    cy.visit("/");
+    cy.visit("/explore");
 
     cy.contains("Log In").click();
     // cy.request("/")
