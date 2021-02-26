@@ -1,6 +1,6 @@
 describe("Search for a course", () => {
   it("searches for a course", () => {
-    cy.visit("/");
+    cy.visit("/explore");
     cy.get("#all-courses").scrollIntoView().wait(1000);
 
     cy.get("input[placeholder='Search Courses']").type("test");
