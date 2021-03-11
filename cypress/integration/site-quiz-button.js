@@ -24,7 +24,7 @@ describe("Testing site quiz button on the homepage", () => {
     cy.url().should("include", "/site_quizzes")
   });
 
-  it.only("clicks on the site quiz button as a student", () => {
+  it("clicks on the site quiz button as a student", () => {
     userLogin(studentEmail);
 
     cy.visit("/explore");
