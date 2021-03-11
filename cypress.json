@@ -15,6 +15,11 @@
     "add-course-content.js",
     "sample_spec.js",
     "student-working-with-course.js",
-    "cleanup.js"
+    "cleanup.js",
+    "search-for-course.js",
+    "newsletter-form.js",
+    "offline-contact-us-form.js",
+    "site-quiz-button.js",
+    "account-dropdown.js"
   ]
 }
